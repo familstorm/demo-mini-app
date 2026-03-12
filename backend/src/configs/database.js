@@ -6,6 +6,7 @@ dotenv.config()
 export default async function (req, res, next) {
   try {
     const options = {
+      dialect: 'postgres',
       host: process.env.DATABASE_HOST || 'localhost',
       port: process.env.DATABASE_PORT || 5432,
       username: process.env.DATABASE_USERNAME || 'root',
@@ -13,10 +14,7 @@ export default async function (req, res, next) {
       database: process.env.DATABASE_NAME || 'db_mini_app',
     }
 
-    const sequelize = new Sequelize({
-      ...options,
-      dialect: 'postgres'
-    });
+    const sequelize = new Sequelize(options);
     await sequelize.authenticate();
   } catch (error) {
     throw new Error("Database can't connect...")
