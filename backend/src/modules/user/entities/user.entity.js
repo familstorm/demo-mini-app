@@ -1,28 +1,36 @@
 import { DataTypes, Model } from 'sequelize'
-import database from '../../../configs/database.js'
+import config from '../../../configs/database.js';
 import hashUtil from '../../../utils/hash.util.js'
 
 class UserEntity extends Model { }
 
 const UserSchema = {
   id: {
+    allowNull: false,
+    primaryKey: true,
     type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    autoIncrement: true,
-    primaryKey: true
+    defaultValue: DataTypes.UUIDV4
   },
   email: {
+    allowNull: false,
     type: DataTypes.STRING,
-    allowNull: false
+    unique: true
   },
   passwordHash: {
+    allowNull: false,
     type: DataTypes.STRING,
-    allowNull: false
+  },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE
   }
 }
-
 UserEntity.init(UserSchema, {
-  sequelize: database,
+  sequelize: config,
   modelName: 'UserEntity',
   tableName: "users",
   indexes: [
@@ -32,15 +40,14 @@ UserEntity.init(UserSchema, {
     },
   ],
   hooks: {
-    // Hook tự động hash password — không cần làm thủ công trong controller
     beforeCreate: async (user) => {
-      if (user.password) {
-        user.password = await hashUtil.generateHash(user.password);
+      if (user.passwordHash) {
+        user.passwordHash = await hashUtil.generateHash(user.passwordHash);
       }
     },
     beforeUpdate: async (user) => {
-      if (user.changed('password')) {
-        user.password = await bcrypt.generateHash(user.password);
+      if (user.changed('passwordHash')) {
+        user.passwordHash = await bcrypt.generateHash(user.passwordHash);
       }
     },
   },

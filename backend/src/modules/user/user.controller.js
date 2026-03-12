@@ -1,18 +1,19 @@
-import UserEntity from './entities/user.entity.js';
+import UserService from './user.service.js'
 
 const userController = {
   create: async (req, res, next) => {
     try {
+      const resp = await UserService.createUser()
 
+      res.json({ message: 'respond with a create', resp });
     } catch (error) {
-      res.json({ message: 'respond with a profile' });
+      res.json({ message: error.message, });
     } finally {
       next()
     }
   },
 
   getAll: (req, res, next) => {
-
     res.json({ message: 'respond with a all' });
   },
 
