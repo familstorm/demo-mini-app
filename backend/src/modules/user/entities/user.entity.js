@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize'
 import database from '../../../configs/database.js'
-
+import hashUtil from '../../../utils/hash.util.js'
 
 class UserEntity extends Model { }
 
@@ -12,10 +12,12 @@ const UserSchema = {
     primaryKey: true
   },
   email: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false
   },
   passwordHash: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false
   }
 }
 
@@ -28,7 +30,20 @@ UserEntity.init(UserSchema, {
       unique: true,
       fields: ['email'],
     },
-  ]
+  ],
+  hooks: {
+    // Hook tự động hash password — không cần làm thủ công trong controller
+    beforeCreate: async (user) => {
+      if (user.password) {
+        user.password = await hashUtil.generateHash(user.password);
+      }
+    },
+    beforeUpdate: async (user) => {
+      if (user.changed('password')) {
+        user.password = await bcrypt.generateHash(user.password);
+      }
+    },
+  },
 })
 
 export default UserEntity;

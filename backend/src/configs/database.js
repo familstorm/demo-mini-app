@@ -13,12 +13,12 @@ const options = {
   database: process.env.DATABASE_NAME || 'db_mini_app',
 }
 
-const sequelize = new Sequelize(options);
+const config = new Sequelize(options);
 
-try {
-  await sequelize.authenticate();
-} catch (error) {
-  throw new Error("Database can't connect...")
-}
+// try {
+//   await sequelize.authenticate();
+// } catch (error) {
+//   throw new Error("Database can't connect...")
+// }
 
-export default sequelize;
+export default config;

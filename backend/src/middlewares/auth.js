@@ -1,5 +1,8 @@
+import jwt from 'jsonwebtoken'
 
-export default function (req, res, next) {
+const authenticate = (req, res, next) => {
   console.log('Auth Middleware');
   next()
 }
+
+export default authenticate;
