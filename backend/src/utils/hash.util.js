@@ -6,7 +6,7 @@ export default {
     const hash = bcrypt.hashSync(password, salt);
     return hash
   },
-  verifyHash: (password) => {
+  verifyHash: (password, hash) => {
     return bcrypt.compareSync(password, hash);
   }
 }
