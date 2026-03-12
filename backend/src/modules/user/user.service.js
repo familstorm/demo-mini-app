@@ -1,6 +1,21 @@
 import UserEntity from './entities/user.entity.js'
 
 
+const getByEmail = async (email) => {
+  try {
+    const user = await UserEntity.findOne({
+      attributes: ['id', 'email', 'passwordHash'],
+      where: { email },
+    })
+    return user.dataValues
+  } catch (error) {
+    return {
+      messsage: 'Query errors',
+      error
+    }
+  }
+}
+
 const createUser = async () => {
   try {
     const model = await UserEntity.create({
@@ -28,6 +43,7 @@ const getUser = async () => {
 }
 
 export default {
+  getByEmail,
   createUser,
   getUser
 };

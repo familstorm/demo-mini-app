@@ -9,7 +9,6 @@ const userController = {
     } catch (error) {
       res.json({ message: error.message, });
     } finally {
-      next()
     }
   },
 
@@ -18,7 +17,7 @@ const userController = {
   },
 
   getProfile: (req, res, next) => {
-    res.json({ message: 'respond with a profile' });
+    return res.json({ message: 'respond with a profile' });
   },
 }
 
