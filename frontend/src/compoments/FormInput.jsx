@@ -5,8 +5,9 @@ function FormInput({
   type='text',
   value,
   placeholder,
-  onChange,
   error,
+  onChange,
+  onFocus
 }) {
 
   return (
@@ -14,7 +15,7 @@ function FormInput({
       { label && (
         <label htmlFor={name}>{label}</label>
       )}
-      <input type={type} name={name} id={name} value={value} placeholder={placeholder} onChange={onChange} />
+      <input type={type} name={name} id={name} value={value} placeholder={placeholder} onChange={onChange} onFocus={onFocus} />
       { error && (
         <div className="error">
           <p>{error}</p>

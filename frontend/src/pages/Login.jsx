@@ -1,43 +1,42 @@
-import { useState } from 'react';
 import { Link } from 'react-router'
 import { useTranslation } from 'react-i18next';
 
 import '../assets/stylesheets/login.css'
-import useFetch from '../apiClient/useFetch';
+import useFormLogin from '../stores/login';
 import FormInput from '../compoments/FormInput';
 
 function Login() {
   const { t } = useTranslation();
 
-  const [data] = useFetch("https://jsonplaceholder.typicode.com/posts/1", 'GET');
-
-  console.log(data);
+  // const [data] = useFetch("https://jsonplaceholder.typicode.com/posts/1", 'GET');
+  const [formData, updateFields, getValidates, isValid, errors, touchSubmited] = useFormLogin()
   
-
-  const [formData] = useState({
-    values: {email: '', password: ''},
-    errors: {email: 'Errrro', password: ''},
-    isSubmited: false,
-  })
-
-  const handleChange = (e) => {
+  const handleChange = ((e) => {
     const { name, value } = e.target
-    // setFormData(prev => ({
-    //   ...prev.values,
-    //   [name]: value
-    // }))
-
-    console.log(name, value)
-    // console.log(formData, );
-  }
+    updateFields(name, value)
+    getValidates()
+  })
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    if (formData.isSubmited)
+      return
 
-    // const payload = {
-    //   email: formData.email,
-    //   password: formData.password
-    // }
+    getValidates()
+    if (!isValid)
+      console.log('cann\'t submit form')
+
+    console.log('Process submit login form');
+    touchSubmited()
+    
+    setTimeout(() => {
+      const payload = {
+        email: formData.values.email,
+        password: formData.values.password
+      }
+      touchSubmited()
+      console.log('Call api success', payload);
+    }, 5000);
   }
 
   return (
@@ -51,7 +50,7 @@ function Login() {
             value={formData.values.email}
             placeholder="Email address"
             onChange={handleChange}
-            error={formData.errors.email}
+            error={errors.email}
           />
           <FormInput
             label="Enter your password"
@@ -59,10 +58,10 @@ function Login() {
             value={formData.values.password}
             placeholder="Password"
             onChange={handleChange}
-            error={formData.errors.password}
+            error={errors.password}
           />
           <div className='group-field'>
-            <button onClick={handleSubmit} className='form-submit-btn' type="submit">Log in</button>
+            <button disabled={!isValid || formData.isSubmited} onClick={handleSubmit} className={`form-submit-btn ${(!isValid || formData.isSubmited) ? "disable" : ""}`} type="submit">Log in</button>
             <div className='other-link'>
               <Link to="/">Register</Link>
               <Link to="/">Forgotten password?</Link>
