@@ -1,6 +1,6 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import { loadTranslations } from './apiClient/client'
+import { loadTranslations } from './apiClient/translation'
 import { Utils } from "./utils/storage"
 
 export async function initI18n(lang) {

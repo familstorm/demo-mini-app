@@ -1,4 +1,5 @@
 import { useState, } from 'react'
+import { loginApi } from '../apiClient/auth'
 
 
 const validateForm = (name, value) => {
@@ -68,7 +69,20 @@ const useFormLogin = () => {
     getValidate('password')
   }
 
-  return [formData, updateFields, getValidates, isValid, errors, touchSubmited]
+
+  const callApi = async () => {
+    if (formData.isSubmited) return
+
+    try {
+      const data = await loginApi()
+      console.log('resp data: ', data);
+      return
+    } catch (error) {
+      return error
+    }
+  }
+
+  return [formData, updateFields, getValidates, isValid, errors, touchSubmited, callApi]
 }
 
 export default useFormLogin;

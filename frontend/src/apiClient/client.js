@@ -1,20 +1,25 @@
-export async function loadTranslations(lang) {
-  // const res = await fetch(`/api/translations?lang=${lang}`)
-  // const data = await res.json()
+import axios from 'axios';
+import { Utils } from '../utils/storage';
 
-  console.log(`Language: ${lang}`)
-  const data = {
-    en: {
-      translation: {
-        "Login": "Log in"
-      }
-    },
-    sv: {
-      translation: {
-        "Login": "Logga in"
-      }
-    }
-  };
+// Default config options
+const defaultOptions = {
+  baseURL: import.meta.env.VITE_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
 
-  return data[lang].translation
-}
+// Create instance
+let instance = axios.create(defaultOptions);
+
+// Set the AUTH token for any request
+instance.interceptors.request.use(function (config) {
+  const token = Utils.getLocalStorage('token');
+  config.headers.Authorization = token ? `Bearer ${token}` : '';
+
+  console.log('token', token);
+
+  return config;
+});
+
+export default instance

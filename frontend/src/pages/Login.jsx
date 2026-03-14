@@ -2,14 +2,14 @@ import { Link } from 'react-router'
 import { useTranslation } from 'react-i18next';
 
 import '../assets/stylesheets/login.css'
-import useFormLogin from '../stores/login';
+import useFormLogin from '../hooks/login';
 import FormInput from '../compoments/FormInput';
 
 function Login() {
   const { t } = useTranslation();
 
   // const [data] = useFetch("https://jsonplaceholder.typicode.com/posts/1", 'GET');
-  const [formData, updateFields, getValidates, isValid, errors, touchSubmited] = useFormLogin()
+  const [formData, updateFields, getValidates, isValid, errors, touchSubmited, callApi] = useFormLogin()
   
   const handleChange = ((e) => {
     const { name, value } = e.target
@@ -27,16 +27,19 @@ function Login() {
       console.log('cann\'t submit form')
 
     console.log('Process submit login form');
+
+    const result = await callApi()
+    console.log('Done submit login form', result);
     touchSubmited()
     
-    setTimeout(() => {
-      const payload = {
-        email: formData.values.email,
-        password: formData.values.password
-      }
-      touchSubmited()
-      console.log('Call api success', payload);
-    }, 5000);
+    // setTimeout(() => {
+    //   const payload = {
+    //     email: formData.values.email,
+    //     password: formData.values.password
+    //   }
+    //   touchSubmited()
+    //   console.log('Call api success', payload);
+    // }, 5000);
   }
 
   return (
