@@ -45,3 +45,57 @@
 .switcher-section img {
   width: 24px;
 }
+
+
+.form-section .group-field {
+  padding: .5rem 0 .5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.login-box .group-field .form-submit-btn {
+  width: 268px;
+  height: 60px;
+  padding: 0.5rem 4rem;
+  border-radius: 25px;
+  border: none;
+  background-color: #07a31f;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.form-section .group-field input, .form-section .group-field label {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1rem;
+  padding: 4px;
+}
+
+ .form-section .group-field label {
+  font-size: 20px;
+ }
+
+.form-section .group-field input {
+  padding-left: 16px;
+  margin-left: 16px;
+  height: 42px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+}
+
+.group-field .error {
+  padding: 4px 0;
+  align-self: flex-start;
+}
+.group-field .error p {
+  color: #ff0000;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1rem;
+}

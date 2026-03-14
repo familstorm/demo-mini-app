@@ -1,25 +1,30 @@
 import { useState } from "react"
+import { changeLanguage } from '../i18n'
+import { Utils } from "../utils/storage"
 
-const languages = [
-  {
-    lang: 'SE',
+const languages = {
+  sv: {
+    lang: 'sv',
     text: 'Svenska',
     flag: '/flags/SE.png'
   },
-  {
-    lang: 'EN',
+  en: {
+    lang: 'en',
     text: 'English',
     flag: '/flags/GB.png'
   },
-]
+}
 
 function Switcher() {
-  const [open, setOpen] = useState(false)
-  const [currentLang, setLanguage] = useState(languages[0])
+  const lang = Utils.getLocalStorage('lang') || 'en'
 
-  const handleChangeLanguage = (lang) => {
-    setLanguage(lang)
+  const [open, setOpen] = useState(false)
+  const [currentLang, setLanguage] = useState(languages[lang])
+
+  const handleChangeLanguage = async (item) => {
     setOpen(!open)
+    setLanguage(item)
+    changeLanguage(item.lang)
   }
 
   return(
@@ -31,7 +36,7 @@ function Switcher() {
           </div>
           {open && (
             <div className="dropdown-select">
-              { languages.map((item) => (
+              { Object.values(languages).map((item) => (
                 <div key={item.lang} onClick={() => handleChangeLanguage(item)} className='lang-item'>
                   <span>{item.text}</span>
                   <img src={item.flag} alt={item.text} />

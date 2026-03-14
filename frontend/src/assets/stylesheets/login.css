@@ -37,14 +37,6 @@
   width: 85%;
 }
 
-.login-box .form-section .group-field {
-  padding: .5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .login-box .group-field  .other-link {
   padding: 1.5rem 0 0;
 }
@@ -55,50 +47,6 @@
   padding-bottom: 0;
   font-size: 18px;
   font-weight: 500;
-  line-height: 1rem;
-}
-
-.login-box .group-field .form-submit-btn {
-  width: 268px;
-  height: 60px;
-  padding: 0.5rem 4rem;
-  border-radius: 25px;
-  border: none;
-  background-color: #07a31f;
-  color: #fff;
-  text-align: center;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.login-box .form-section .group-field input, .login-box .form-section .group-field label {
-  width: 100%;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1rem;
-  padding: 4px;
-}
-
- .login-box .form-section .group-field label {
-  font-size: 20px;
- }
-
-.login-box .form-section .group-field input {
-  padding-left: 16px;
-  margin-left: 16px;
-  height: 42px;
-  border-radius: 30px;
-  border: 1px solid #ccc;
-}
-
-.group-field .error {
-  padding: 4px 0;
-  align-self: flex-start;
-}
-.group-field .error p {
-  color: #ff0000;
-  font-size: 18px;
-  font-weight: 300;
   line-height: 1rem;
 }
 
