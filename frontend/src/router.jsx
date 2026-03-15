@@ -10,7 +10,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    loader: Dashboard
+    children: [
+      {
+        index: true,
+        element: <Dashboard />
+      }
+    ]
   },
   {
     element: <AuthLayout />,

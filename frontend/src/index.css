@@ -1,5 +1,32 @@
 *, html,body, .root { margin: 0; padding: 0; }
 
+.topbar {
+  width: 75%;
+  height: 36px;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  padding: 2.5rem 60px;
+}
+
+.topbar .logo img {
+  width: 60px;
+}
+
+.topbar .section-menu {
+  display: flex;
+  min-width: 280px;
+  justify-content: space-around;
+}
+
+.topbar .section-menu a {
+  padding: 0 1.5rem;
+  font-weight: 500;
+  list-style: 1.5rem;
+  font-size: 20px;
+}
+
+
 .switcher-section {
   display: flex;
   position: relative;

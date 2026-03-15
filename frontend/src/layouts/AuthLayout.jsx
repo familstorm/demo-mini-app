@@ -1,6 +1,6 @@
-import { Outlet, Navigate } from 'react-router'
+import { Link, Outlet, Navigate } from 'react-router'
 import Footer from '../compoments/Footer'
-import TopBar from '../compoments/TopBar'
+import Switcher from '../compoments/Switcher'
 import useToken from '../hooks/token'
 
 function AuthLayout() {
@@ -13,7 +13,21 @@ function AuthLayout() {
   return (
     <>
     <div className='login-layout'>
-      <TopBar />
+      <div className="topbar">
+        <div className='logo'>
+          <Link to="/">
+            <img src="./diamond.png" alt="Logo"/>
+          </Link> 
+        </div>
+        <div className='section-menu'>
+            <Link to='/'>Home</Link>
+            <Link to='/'>Order</Link>
+            <Link to='/'>Our Customers</Link>
+            <Link to='/'>About us</Link>
+            <Link to='/'>Contact us</Link>
+            <Switcher />
+        </div>
+      </div>
       
       <main className='login-container'>
         <Outlet />
