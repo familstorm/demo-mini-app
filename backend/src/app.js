@@ -1,5 +1,6 @@
 import express from 'express'
 import logger from 'morgan'
+import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 
@@ -9,6 +10,7 @@ import Routers from './routes/index.js'
 dotenv.config({ override: true, debug: true })
 const app = express();
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
