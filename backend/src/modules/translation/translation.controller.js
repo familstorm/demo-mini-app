@@ -4,6 +4,9 @@ const TranslationController = {
     res.json({ message: 'respond with a all' });
   },
 
+  createLocalization() {
+
+  }
 }
 
 export default TranslationController;
