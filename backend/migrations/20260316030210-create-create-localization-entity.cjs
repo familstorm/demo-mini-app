@@ -10,10 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       key: {
-        unique: true,
+        allowNull: false,
         type: Sequelize.STRING
       },
       value: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       languageId: {
