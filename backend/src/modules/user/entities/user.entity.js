@@ -29,6 +29,7 @@ const UserSchema = {
     type: DataTypes.DATE
   }
 }
+
 UserEntity.init(UserSchema, {
   sequelize: config,
   modelName: 'UserEntity',
