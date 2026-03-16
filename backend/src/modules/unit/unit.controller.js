@@ -16,9 +16,6 @@ const UnitController = {
     res.json({ message: 'respond with a all' });
   },
 
-  getProfile: (req, res, next) => {
-    return res.json({ message: 'respond with a profile' });
-  },
 }
 
 export default UnitController;
