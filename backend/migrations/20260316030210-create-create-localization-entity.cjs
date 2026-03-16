@@ -40,5 +40,6 @@ module.exports = {
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('localizations');
+    await queryInterface.removeIndex('localizations', ['key', 'languageId', 'value'])
   }
 };

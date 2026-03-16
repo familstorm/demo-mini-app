@@ -34,12 +34,10 @@ UserEntity.init(UserSchema, {
   sequelize: config,
   modelName: 'UserEntity',
   tableName: "users",
-  indexes: [
-    {
-      unique: true,
-      fields: ['email'],
-    },
-  ],
+  indexes: [{
+    unique: true,
+    fields: ['email'],
+  }],
   hooks: {
     beforeCreate: async (user) => {
       if (user.passwordHash) {

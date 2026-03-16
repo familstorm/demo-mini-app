@@ -4,12 +4,6 @@ import config from '../../../configs/database.js';
 class LanguageEntity extends Model { }
 
 const LanguageSchema = {
-  id: {
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-    type: DataTypes.INTEGER
-  },
   code: {
     type: DataTypes.STRING
   },
@@ -30,12 +24,10 @@ LanguageEntity.init(LanguageSchema, {
   sequelize: config,
   modelName: 'LanguageEntity',
   tableName: "languages",
-  indexes: [
-    {
-      unique: true,
-      fields: ['code'],
-    },
-  ],
+  indexes: [{
+    unique: true,
+    fields: ['code'],
+  }],
 });
 
 LanguageEntity.Localization = LanguageEntity.hasMany(LocalizationEntity)

@@ -5,12 +5,6 @@ import LanguageEntity from './language.entity.js';
 class LocalizationEntity extends Model { }
 
 const LocalizationSchema = {
-  id: {
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-    type: DataTypes.INTEGER
-  },
   key: {
     unique: true,
     type: DataTypes.STRING
@@ -28,12 +22,10 @@ LocalizationEntity.init(LocalizationSchema, {
   sequelize: config,
   modelName: 'LocalizationEntity',
   tableName: "localizations",
-  indexes: [
-    {
-      unique: true,
-      fields: ['key', 'languageId', 'value'],
-    },
-  ],
+  indexes: [{
+    unique: true,
+    fields: ['key', 'languageId', 'value'],
+  }],
 })
 
 LocalizationEntity.Language = LocalizationEntity.belongsTo(LanguageEntity)
