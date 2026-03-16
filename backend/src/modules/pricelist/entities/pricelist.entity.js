@@ -4,7 +4,7 @@ import config from '../../../configs/database.js';
 class PriceListEntity extends Model { }
 
 const PriceListSchema = {
-  article_no: {
+  articleNo: {
     unique: true,
     allowNull: false,
     type: DataTypes.BIGINT

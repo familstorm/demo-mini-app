@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.BIGINT
       },
-      article_no: {
+      articleNo: {
         unique: true,
         allowNull: false,
         type: Sequelize.BIGINT
