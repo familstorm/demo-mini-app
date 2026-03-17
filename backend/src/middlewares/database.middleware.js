@@ -18,7 +18,10 @@ const initializationDatabase = (database) => {
     foreignKey: 'unitId',
     as: 'unit'
   })
-  UnitEntity.Pricelist = UnitEntity.hasMany(PriceListEntity)
+  UnitEntity.Pricelist = UnitEntity.hasMany(PriceListEntity, {
+    foreignKey: 'unitId',
+    as: 'priceLists',
+  })
 
 }
 

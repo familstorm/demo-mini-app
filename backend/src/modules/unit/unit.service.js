@@ -65,7 +65,7 @@ const create = async (body) => {
 const update = async (id, body) => {
   try {
     // Check item by id
-    const unit = await UnitEntity.findByPk(id, body)
+    const unit = await UnitEntity.findByPk(id)
     if (!unit)
       return { status: false, data: null }
 

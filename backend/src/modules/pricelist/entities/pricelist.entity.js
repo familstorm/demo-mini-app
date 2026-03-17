@@ -9,7 +9,7 @@ const PriceListSchema = {
     allowNull: false,
     type: DataTypes.BIGINT
   },
-  product: {
+  name: {
     allowNull: false,
     type: DataTypes.STRING
   },
@@ -32,6 +32,10 @@ const PriceListSchema = {
   unitId: {
     allowNull: false,
     type: DataTypes.INTEGER,
+    references: {
+      model: 'units',
+      key: 'id',
+    },
   }
 }
 
