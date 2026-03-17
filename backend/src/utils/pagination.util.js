@@ -2,7 +2,7 @@ const DEFAULT_PAGE = 1;
 const DEFAULT_PER_PAGE = 25;
 
 const toNumber = (value, defaultValue) => {
-  return Number.isNaN(value) ? defaultValue : Number(value)
+  return !Number.isNaN(value) ? defaultValue : Number(value)
 }
 
 export default {
@@ -12,6 +12,8 @@ export default {
 
     if (page < 1) page = DEFAULT_PAGE
     if (perPage < 1) perPage = DEFAULT_PER_PAGE
+    console.log('page', page);
+    console.log('perPage', perPage);
 
     const limit = perPage
     const offset = (page - 1) * perPage
