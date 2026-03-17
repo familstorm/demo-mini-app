@@ -4,8 +4,10 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 
+import database from './configs/database.js';
 import notFoundMiddleware from './middlewares/notFound.js'
 import Routers from './routes/index.js'
+import initializationDatabase from './middlewares/database.middleware.js'
 
 dotenv.config({ override: true, debug: true })
 const app = express();
@@ -15,6 +17,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+initializationDatabase(database)
+
 
 app.use(Routers);
 

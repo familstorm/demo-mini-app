@@ -28,6 +28,5 @@ LocalizationEntity.init(LocalizationSchema, {
   }],
 })
 
-LocalizationEntity.Language = LocalizationEntity.belongsTo(LanguageEntity)
 
 export default LocalizationEntity;

@@ -30,7 +30,6 @@ LanguageEntity.init(LanguageSchema, {
   }],
 });
 
-LanguageEntity.Localization = LanguageEntity.hasMany(LocalizationEntity)
 
 
 export default LanguageEntity;

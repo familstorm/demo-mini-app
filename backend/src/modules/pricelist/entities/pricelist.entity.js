@@ -45,6 +45,4 @@ PriceListEntity.init(PriceListSchema, {
   }],
 })
 
-PriceListEntity.Language = PriceListEntity.belongsTo(UnitEntity)
-
 export default PriceListEntity;

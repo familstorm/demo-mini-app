@@ -9,8 +9,8 @@ import translationRouter from '../modules/translation/translation.router.js'
 const router = express.Router();
 router.use('/users', userRouter)
 router.use('/auth', authRouter)
-router.use('/pricelist', pricelistRouter)
 router.use('/unit', unitRouter)
+router.use('/pricelist', pricelistRouter)
 router.use('/translations', translationRouter)
 
 export default router

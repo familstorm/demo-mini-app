@@ -1,8 +1,4 @@
 import { DataTypes, Model } from 'sequelize'
-import config from '../../../configs/database.js';
-import PriceListEntity from './pricelist.entity.js';
-
-class UnitEntity extends Model { }
 
 const UnitSchema = {
   title: {
@@ -18,12 +14,14 @@ const UnitSchema = {
   }
 }
 
-UnitEntity.init(UnitSchema, {
-  sequelize: config,
-  modelName: 'UnitEntity',
-  tableName: "units",
-})
-
-UnitEntity.Localization = UnitEntity.hasMany(PriceListEntity)
+class UnitEntity extends Model {
+  static initModel(sequelize) {
+    return UnitEntity.init(UnitSchema, {
+      sequelize,
+      modelName: 'UnitEntity',
+      tableName: "units",
+    })
+  }
+}
 
 export default UnitEntity;
