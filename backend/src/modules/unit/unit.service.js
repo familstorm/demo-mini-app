@@ -66,26 +66,22 @@ const update = async (id, body) => {
   try {
     // Check item by id
     const unit = await UnitEntity.findByPk(id, body)
-    console.log('unit:', unit);
-
     if (!unit)
       return { status: false, data: null }
 
-    const newValue = {
+    const newValues = {
       title: body.title,
       symbol: body.symbol,
       description: body.description
     }
-    const [updatedRows] = await UnitEntity.update(newValue, {
+    const [updatedRows] = await UnitEntity.update(newValues, {
       where: { id }
     });
     if (updatedRows > 0)
       return { status: true }
-
     return { status: false, data: null }
   } catch (error) {
     return { status: false, data: null }
-
   }
 }
 
