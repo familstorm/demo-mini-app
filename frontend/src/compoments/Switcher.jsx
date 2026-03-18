@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { changeLanguage } from '../i18n'
+// import { changeLanguage } from '../i18n'
 import { Utils } from "../utils/storage"
+import { useLocalization } from '../contexts/LocalizationProvider'
 
 const languages = {
   sv: {
@@ -16,15 +17,17 @@ const languages = {
 }
 
 function Switcher() {
+  const { loadLanguage } = useLocalization()
   const lang = Utils.getLocalStorage('lang') || 'en'
 
   const [open, setOpen] = useState(false)
   const [currentLang, setLanguage] = useState(languages[lang])
 
+
   const handleChangeLanguage = async (item) => {
     setOpen(!open)
     setLanguage(item)
-    changeLanguage(item.lang)
+    loadLanguage(item.lang)
   }
 
   return(

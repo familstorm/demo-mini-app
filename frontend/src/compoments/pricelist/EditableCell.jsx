@@ -32,9 +32,14 @@ function EditableCell({ cell, field, editable, itemId }) {
     fetchApi()
   }
 
+  const hidenTable = ['inPrice', 'description']
+  const hidenMobile = ['articleNo', 'unit', 'inStock']
+
   return (
     <>
-      <td onDoubleClick={() => handleDoubleClick(field, cell, editable)}>
+      <td
+        className={`${hidenTable.includes(field)? 'hide-tablet' : ''} ${hidenMobile.includes(field)? 'hide-mobile' : ''}`}
+        onDoubleClick={() => handleDoubleClick(field, cell, editable)}>
         {
           editable && isEdit ? (
             <div className="cell-content">

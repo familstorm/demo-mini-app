@@ -12,13 +12,18 @@ function PricelistTable() {
     fetchApi();
   }, [fetchApi]);
 
+  const hidenTable = ['inPrice', 'description']
+  const hidenMobile = ['articleNo', 'unit', 'inStock']
+
   return (
     <div className="pricelist-table">
       <table>
         <thead className="table-header">
           <tr>
             {headers.map((header, index) => (
-              <th key={index}>{header.text}</th>
+              <th
+                className={`${hidenTable.includes(header.id)? 'hide-tablet' : ''} ${hidenMobile.includes(header.id)? 'hide-mobile' : ''}`}
+                key={index}>{header.text}</th>
             ))}
           </tr>
         </thead>

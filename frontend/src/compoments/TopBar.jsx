@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import SideBar from './SideBar'
 import Switcher from './Switcher'
 import '../assets/stylesheets/topbar.css'
 
@@ -16,6 +17,7 @@ function TopBar() {
             <p className='text text-position'>Storfjord AS</p>
           </div>
         </div>
+        <SideBar />
         <div className='section-menu'>
             <Switcher />
         </div>

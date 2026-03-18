@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import '../assets/stylesheets/sidebar.css'
+import { useState } from 'react'
 
 
 const menus = [
@@ -18,21 +19,30 @@ const menus = [
 ]
 
 function SideBar() {
+  const [toggler, setToggler] = useState(false)
 
   return(
     <>
-    <div className='sidebar'>
-      <h4>Menu</h4>
-      <hr/>
-      <div className="sidebar-menu">
-        {menus.map((item, index) => (
-          <Link to={item.link} key={index} className={`menu-item ${item.active ? 'active' : ''}`}>
-            <i className={`fa-solid ${item.icon}`}></i>
-            {item.text && <span>{item.text}</span>}
-          </Link>
-        ))}
+      <div>
+        <div className='hamburger hide-desktop'>
+          <button onClick={() => setToggler(!toggler)}><i className='fa-solid fa-bars'></i></button>
+        </div>
+
+        <div className={`sidebar custom-responsive ${toggler ? 'active': ''}`}>
+          <div className='container'>
+            <h4>Menu</h4>
+            <hr/>
+            <div className="sidebar-menu">
+              {menus.map((item, index) => (
+                <Link to={item.link} key={index} className={`menu-item ${item.active ? 'active' : ''}`}>
+                  <i className={`fa-solid ${item.icon}`}></i>
+                  {item.text && <span>{item.text}</span>}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     </>
   )
 }
