@@ -16,10 +16,21 @@ let instance = axios.create(defaultOptions);
 instance.interceptors.request.use(function (config) {
   const token = Utils.getLocalStorage('token');
   config.headers.Authorization = token ? `Bearer ${token}` : '';
-
-  console.log('token', token);
-
   return config;
 });
+
+instance.interceptors.response.use((response) => {
+  return response
+}, (error) => {
+  if (error.response) {
+    const { status, data } = error.response;
+    if (status == 401) {
+      Utils.clearLocalStorage('token')
+    }
+
+    console.log('API Error Data:', data);
+  }
+  return Promise.reject(error);
+})
 
 export default instance

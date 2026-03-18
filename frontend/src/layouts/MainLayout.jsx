@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router'
+import useToken from '../hooks/token'
+import TopBar from '../compoments/TopBar'
 import SideBar from '../compoments/SideBar'
 import ProtectedRoute from '../compoments/ProtectedRoute'
-import useToken from '../hooks/token'
 
 
 function MainLayout() {
@@ -11,15 +12,17 @@ function MainLayout() {
   return (
     <>
     <ProtectedRoute token={token}>
-      <div>
-        <h4>App TopBar</h4>
-      </div>
+      <div className='layout'>
+        <TopBar />
 
-      <SideBar />
+        <div className='layout-content'>
+          <SideBar />
+          <main className='layout-main'>
+            <Outlet />
+          </main>
+        </div>
+      </div>
       
-      <main>
-        <Outlet />
-      </main>
     </ProtectedRoute>
     </>
   )

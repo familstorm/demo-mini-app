@@ -8,4 +8,8 @@ export const Utils = {
     return localStorage.getItem(`demo-${key}`)
   },
 
+  clearLocalStorage: (key) => {
+    return localStorage.clear(`demo-${key}`)
+  },
+
 }

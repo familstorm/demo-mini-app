@@ -1,11 +1,38 @@
 import { Link } from 'react-router'
+import '../assets/stylesheets/sidebar.css'
 
+
+const menus = [
+  {icon: 'fa-file-invoice', text: 'Invoices', link: '/', active: false },
+  {icon: 'fa-user', text: 'Customers', link: '/', active: false },
+  {icon: 'fa-gear', text: 'My Business', link: '/', active: false },
+  {icon: 'fa-book', text: 'Invoice Journal', link: '/', active: false },
+  {icon: 'fa-tag', text: 'Price List', link: '/pricelist', active: false },
+  {icon: 'fa-file-lines', text: 'Multiple Invoicing', link: '/', active: true },
+  {icon: 'fa-circle-xmark', text: 'Unpaid Invoices', link: '/', active: false },
+  {icon: 'fa-ticket', text: 'Offer', link: '/', active: false },
+  {icon: 'fa-box-archive', text: 'Inventory Control', link: '/', active: false },
+  {icon: 'fa-table-cells', text: 'Member Invoicing', link: '/', active: false },
+  {icon: 'fa-cloud-arrow-up', text: 'Import/Export', link: '/', active: false },
+  {icon: 'fa-right-from-bracket', text: 'Log out', link: '/', active: false },
+]
 
 function SideBar() {
 
   return(
     <>
-    <Link to='/'>Dashboard</Link>
+    <div className='sidebar'>
+      <h4>Menu</h4>
+      <hr/>
+      <div className="sidebar-menu">
+        {menus.map((item, index) => (
+          <Link to={item.link} key={index} className={`menu-item ${item.active ? 'active' : ''}`}>
+            <i className={`fa-solid ${item.icon}`}></i>
+            {item.text && <span>{item.text}</span>}
+          </Link>
+        ))}
+      </div>
+    </div>
     </>
   )
 }

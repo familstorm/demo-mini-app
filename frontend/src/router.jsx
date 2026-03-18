@@ -3,8 +3,10 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "./layouts/MainLayout";
 import AuthLayout from "./layouts/AuthLayout";
 
-import Dashboard from "./pages/Dashboard";
 import Login from './pages/Login'
+import Dashboard from "./pages/Dashboard";
+import PriceListPage from "./pages/pricelist/ListPage";
+import PriceListCreate from "./pages/pricelist/CreatePage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />
+      },
+      {
+        path: '/pricelist',
+        element: <PriceListPage />
+      },
+      {
+         path: '/pricelist/create',
+        element: <PriceListCreate />
       }
     ]
   },
