@@ -12,7 +12,7 @@ export const LocalizationProvider = ({ children }) => {
 
   const loadLanguage = useCallback(async(lang)=> {
     try {
-      const { data } = await loadTranslations(lang)
+      const data = await loadTranslations(lang)
       console.log('fetch translation...', data);
       dispatch({
         type: LOCALIZATION_ACTIONS.SET_TRANSLATION,

@@ -16,6 +16,7 @@ export default function useToken() {
   }
 
   const clearToken = () => {
+    Utils.clearLocalStorage('token')
 
   }
 

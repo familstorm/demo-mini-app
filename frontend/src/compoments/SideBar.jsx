@@ -1,7 +1,7 @@
+import { useState } from 'react'
 import { Link } from 'react-router'
 import '../assets/stylesheets/sidebar.css'
-import { useState } from 'react'
-
+import useToken from '../hooks/token'
 
 const menus = [
   {icon: 'fa-file-invoice', text: 'Invoices', link: '/', active: false },
@@ -20,6 +20,11 @@ const menus = [
 
 function SideBar() {
   const [toggler, setToggler] = useState(false)
+  const {clearToken} = useToken()
+
+  const logout = () => {
+    clearToken()
+  }
 
   return(
     <>
@@ -39,6 +44,11 @@ function SideBar() {
                   {item.text && <span>{item.text}</span>}
                 </Link>
               ))}
+
+              <Link className='menu-item' onClick={logout}>
+                <i className='fa-solid fa-right-from-bracket'></i>
+                <span>Log out</span>
+              </Link>
             </div>
           </div>
         </div>
