@@ -27,10 +27,27 @@
   padding: 0 15px;
   font-size: 0.95rem;
   color: #000;
+  box-sizing: border-box;
 }
 
 .search-group .search-input::placeholder {
   color: #bdc3c7;
+}
+
+.search-group .clear-btn {
+  border-left: 1px solid #eee; 
+  padding: 0 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+}
+
+.search-group .clear-btn i {
+  font-size: 1rem;
+  color: #F54927;
 }
 
 .search-group .search-button {

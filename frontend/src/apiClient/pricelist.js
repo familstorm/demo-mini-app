@@ -45,7 +45,7 @@ export async function editableApi(id, payload) {
 
 export async function pricelistApi(params = {}) {
   try {
-    const { data, status } = await client.get('pricelist', params)
+    const { data, status } = await client.get('pricelist', { params })
     if (status == 200) {
       console.log('pricelist api: ', data);
     }

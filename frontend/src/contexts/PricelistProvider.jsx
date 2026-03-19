@@ -24,8 +24,37 @@ export const PricelistProvider = ({ children }) => {
     }
   }, [])
 
+  const fetchSearch = async () => {
+    const { search, pagination } = state
+    const { page, perPage } = pagination
+    const params = { ...search, page, perPage }
+    console.log('params...', params);
+    await fetchApi(params)
+  }
+
+  const setSearch = async (search = {}) => {
+    dispatch({
+      type: PRICELIST_ACTIONS.SET_SEARCH,
+      payload: search
+    })
+  }
+
+  const clearSearch = async (key) => {
+    dispatch({
+      type: PRICELIST_ACTIONS.CLEAR_SEARCH,
+      payload: key
+    })
+    const { search, pagination } = state
+    const { perPage } = pagination
+    const params = {
+      ...search,
+      [key]: '', page: 1, perPage
+    }
+    await fetchApi(params)
+  }
+
   return (
-    <PricelistContext.Provider value={{ state, dispatch, fetchApi }}>
+    <PricelistContext.Provider value={{ state, dispatch, setSearch, fetchApi, fetchSearch, clearSearch }}>
       {children}
     </PricelistContext.Provider>
   );

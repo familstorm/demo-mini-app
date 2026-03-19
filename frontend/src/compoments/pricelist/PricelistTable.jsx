@@ -4,7 +4,7 @@ import { PricelistContext } from '../../contexts/PricelistProvider'
 import PricelistRow from "./PricelistRow"
 
 function PricelistTable() {
-  const { state , fetchApi } = useContext(PricelistContext)
+  const { state, fetchApi } = useContext(PricelistContext)
   const { items, headers } = state;
   console.log('items: ', items, headers);
   

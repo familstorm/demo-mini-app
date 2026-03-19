@@ -2,7 +2,8 @@
 export const initState = {
   items: [],
   pagination: { page: 1, limit: 25, totalPage: 1 },
-  params: { search: { articleNo: '', name: '' }, orderBy: 'id', orderDict: 'DESC' },
+  search: { articleNo: '', name: '' },
+  params: { orderBy: 'id', orderDict: 'DESC' },
   headers: [
       { id: 'id', text: '' },
       { id: 'articleNo', text: 'Article No.' },
@@ -19,7 +20,9 @@ export const initState = {
 export const PRICELIST_ACTIONS = {
   SET_ITEMS: 'SET_ITEMS',
   SET_PAGINATION: 'SET_PAGINATION',
-  SET_PARAMS: 'SET_PARAMS'
+  SET_PARAMS: 'SET_PARAMS',
+  SET_SEARCH: 'SET_SEARCH',
+  CLEAR_SEARCH: 'CLEAR_SEARCH'
 }
 
 export const reducer = (state, action) => {
@@ -34,13 +37,26 @@ export const reducer = (state, action) => {
     case PRICELIST_ACTIONS.SET_PAGINATION:
       return {
         ...state,
-        pagination: { ...state.pagination, pagination: action.payload }
+        pagination: { ...state.pagination, ...action.payload }
       };
     case PRICELIST_ACTIONS.SET_PARAMS:
       return {
         ...state,
-        params: { ...state.params, params: action.payload }
+        params: { ...state.params, ... action.payload }
       };
+    case PRICELIST_ACTIONS.SET_SEARCH:
+      return {
+        ...state,
+        search: { ...state.search, ...action.payload }
+      };
+    case PRICELIST_ACTIONS.CLEAR_SEARCH:
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          [action.payload]: ''
+        }
+      }
     default:
       return state;
   }
