@@ -1,16 +1,18 @@
 import { Link } from 'react-router'
+import { useTranslation } from 'react-i18next';
 import '../assets/stylesheets/footer.css'
 
 function Footer() {
+  const { t } = useTranslation();
 
   return(
     <div className="footer">
       <div className="footer-text-section">
         <h4>123 Fakturera</h4>
         <div className='text-section-list-link'>
-            <Link to='/'>Home</Link>
-            <Link to='/'>Order</Link>
-            <Link to='/'>Contact us</Link>
+            <Link to='/'>{t('auth.link.home')}</Link>
+            <Link to='/'>{t('auth.link.order')}</Link>
+            <Link to='/'>{t('auth.link.contact_us')}</Link>
         </div>
       </div>
       <div className="footer-copyright">

@@ -1,7 +1,4 @@
 import { DataTypes, Model } from 'sequelize'
-import config from '../../../configs/database.js';
-
-class PriceListEntity extends Model { }
 
 const PriceListSchema = {
   articleNo: {
@@ -39,14 +36,18 @@ const PriceListSchema = {
   }
 }
 
-PriceListEntity.init(PriceListSchema, {
-  sequelize: config,
-  modelName: 'PriceListEntity',
-  tableName: "pricelists",
-  indexes: [{
-    unique: true,
-    fields: ['article_no', 'name']
-  }],
-})
+class PriceListEntity extends Model {
+  static initModel(sequelize) {
+    return PriceListEntity.init(PriceListSchema, {
+      sequelize,
+      modelName: 'PriceListEntity',
+      tableName: "pricelists",
+      indexes: [{
+        unique: true,
+        fields: ['article_no', 'name']
+      }],
+    })
+  }
+}
 
 export default PriceListEntity;

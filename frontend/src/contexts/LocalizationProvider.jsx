@@ -3,22 +3,35 @@ import { loadTranslations } from '../apiClient/translation'
 import i18n from '../i18n'
 
 import {reducer, initState, LOCALIZATION_ACTIONS } from './LocalizationReducer';
+import { Utils } from '../utils/storage';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const LocalizationContext = createContext()
 
 export const LocalizationProvider = ({ children }) => {
+
   const [state, dispatch] = useReducer(reducer, initState);
+
+
+  const getLanguageCode = () => {
+    return Utils.getLocalStorage('language-code') || 'en'
+  }
+
+  const setLanguageCode = (code = 'en') => {
+    Utils.setLocalStorage('language-code', code)
+    dispatch({
+      type: LOCALIZATION_ACTIONS.CHANGE_LANGUAGE,
+      payload: code
+    })
+  }
 
   const loadLanguage = useCallback(async(lang)=> {
     try {
       const data = await loadTranslations(lang)
-      console.log('fetch translation...', data);
       dispatch({
         type: LOCALIZATION_ACTIONS.SET_TRANSLATION,
         payload: data
       })
-
       i18n.addResourceBundle(lang, 'translation', data, true, true)
       await i18n.changeLanguage(lang)
     } catch (err) {
@@ -26,12 +39,18 @@ export const LocalizationProvider = ({ children }) => {
     }
   }, [])
 
-   useEffect(() => {
-    loadLanguage(state.language)
-  }, [])
+  useEffect(() => {
+    const code = getLanguageCode()
+    console.log('useEffect', code);
+    dispatch({
+      type: LOCALIZATION_ACTIONS.CHANGE_LANGUAGE,
+      payload: code
+    });
+    loadLanguage(code)
+  }, [loadLanguage])
 
   return (
-    <LocalizationContext.Provider value={{ state, dispatch, loadLanguage }}>
+    <LocalizationContext.Provider value={{ state, dispatch, loadLanguage, setLanguageCode }}>
       {children}
     </LocalizationContext.Provider>
   );

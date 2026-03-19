@@ -1,10 +1,9 @@
 import { DataTypes, Model } from 'sequelize'
-import config from '../../../configs/database.js';
-
-class LanguageEntity extends Model { }
 
 const LanguageSchema = {
   code: {
+    unique: true,
+    allowNull: false,
     type: DataTypes.STRING
   },
   title: {
@@ -20,16 +19,18 @@ const LanguageSchema = {
   }
 }
 
-LanguageEntity.init(LanguageSchema, {
-  sequelize: config,
-  modelName: 'LanguageEntity',
-  tableName: "languages",
-  indexes: [{
-    unique: true,
-    fields: ['code'],
-  }],
-});
-
-
+class LanguageEntity extends Model {
+  static initModel(sequelize) {
+    return LanguageEntity.init(LanguageSchema, {
+      sequelize,
+      modelName: 'LanguageEntity',
+      tableName: "languages",
+      indexes: [{
+        unique: true,
+        fields: ['code'],
+      }],
+    })
+  }
+}
 
 export default LanguageEntity;

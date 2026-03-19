@@ -15,22 +15,26 @@
 }
 
 .hide-desktop {
-  display: none;
+  display: none !important;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1133px) {
+  .hide-desktop {display: block !important;}
   .hide-tablet, .topbar .avatar {
     display: none !important;
   }
-
+  .layout .topbar .container {
+    width: 92% !important;
+  }
   .topbar .sidebar {
     width: 100% !important;
     height: calc(100vh - 95px) !important;
     position: fixed;
     left: 0;
     right: 0;
-    top: 90px;
+    top: 80px;
     bottom: 0;
+    z-index: 999 ;
     padding: 16px 0 !important;
     background: #fff !important;
   }
@@ -45,6 +49,7 @@
     padding: 0!important;
     height: 80px !important;
     position: relative;
+    z-index: 999;
     left: 0;
     right: 0;
   }
@@ -55,7 +60,7 @@
 
   .topbar .hamburger {
     display: block;
-    top: 1.5rem;
+    top: 1.2rem;
     position: absolute;
     background: #0D83ED !important;
   }
@@ -74,8 +79,11 @@
     font-size: 52px;
     color: #fff;
   }
-
-  .topbar .sidebar  .custom-responsive {
+  .topbar .sidebar-menu {
+    min-height: 80vh;
+    overflow-y: scroll;
+  }
+  .topbar .sidebar .custom-responsive {
     display: none;
     background: #fff !important;
     height: 100vh !important;
@@ -116,6 +124,9 @@
   }
   .topbar .hamburger {
     left: 1.2rem;
+  }
+  .topbar .sidebar {
+    top: 90px !important;
   }
   .layout-main {
     width: 100% !important;

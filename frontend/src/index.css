@@ -127,10 +127,10 @@
 
 .form-section .group-field input {
   padding-left: 16px;
-  margin-left: 16px;
-  height: 42px;
+  height: 52px;
   border-radius: 30px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .group-field .error {

@@ -1,6 +1,5 @@
 import client from './client'
 
-
 export async function createApi(payload) {
   try {
     const url = `/pricelist`
@@ -24,13 +23,12 @@ export async function createApi(payload) {
   }
 }
 
-
 export async function editableApi(id, payload) {
   try {
     const url = `/pricelist/${id}/editable-inline`
     const { data, status } = await client.post(url, payload)
     if (status == 200) {
-      console.log('login api data: ', data);
+      console.log('editable api data: ', data);
     }
     return data
   } catch (error) {
@@ -49,7 +47,7 @@ export async function pricelistApi(params = {}) {
   try {
     const { data, status } = await client.get('pricelist', params)
     if (status == 200) {
-      console.log('pricelistApi: ', data);
+      console.log('pricelist api: ', data);
     }
     return data
   } catch (error) {

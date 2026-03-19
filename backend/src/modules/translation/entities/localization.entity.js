@@ -1,11 +1,8 @@
 import { DataTypes, Model } from 'sequelize'
-import config from '../../../configs/database.js';
-import LanguageEntity from './language.entity.js';
-
-class LocalizationEntity extends Model { }
 
 const LocalizationSchema = {
   key: {
+    allowNull: false,
     unique: true,
     type: DataTypes.STRING
   },
@@ -14,19 +11,26 @@ const LocalizationSchema = {
   },
   languageId: {
     allowNull: false,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'languages',
+      key: 'id',
+    },
   }
 }
 
-LocalizationEntity.init(LocalizationSchema, {
-  sequelize: config,
-  modelName: 'LocalizationEntity',
-  tableName: "localizations",
-  indexes: [{
-    unique: true,
-    fields: ['key', 'languageId', 'value'],
-  }],
-})
-
+class LocalizationEntity extends Model {
+  static initModel(sequelize) {
+    return LocalizationEntity.init(LocalizationSchema, {
+      sequelize,
+      modelName: 'LocalizationEntity',
+      tableName: "localizations",
+      indexes: [{
+        unique: true,
+        fields: ['key', 'languageId', 'value'],
+      }],
+    })
+  }
+}
 
 export default LocalizationEntity;

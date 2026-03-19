@@ -27,7 +27,6 @@ instance.interceptors.response.use((response) => {
     if (status == 401) {
       Utils.clearLocalStorage('token')
     }
-
     console.log('API Error Data:', data);
   }
   return Promise.reject(error);

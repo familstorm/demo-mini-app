@@ -6,19 +6,29 @@ import LocalizationEntity from '../modules/translation/entities/localization.ent
 
 const initializationDatabase = (database) => {
   UserEntity.initModel(database)
-  UnitEntity.initModel(database)
 
+  UnitEntity.initModel(database)
+  PriceListEntity.initModel(database)
+
+  LanguageEntity.initModel(database)
+  LocalizationEntity.initModel(database)
 
   // Relationship for translation
-  LanguageEntity.Localization = LanguageEntity.hasMany(LocalizationEntity)
-  LocalizationEntity.Language = LocalizationEntity.belongsTo(LanguageEntity)
+  LanguageEntity.hasMany(LocalizationEntity, {
+    foreignKey: 'languageId',
+    as: 'localizations'
+  })
+  LocalizationEntity.belongsTo(LanguageEntity, {
+    foreignKey: 'languageId',
+    as: 'language'
+  })
 
   // Relationship for pricelist
-  PriceListEntity.Unit = PriceListEntity.belongsTo(UnitEntity, {
+  PriceListEntity.belongsTo(UnitEntity, {
     foreignKey: 'unitId',
-    as: 'unit'
+    as: 'units'
   })
-  UnitEntity.Pricelist = UnitEntity.hasMany(PriceListEntity, {
+  UnitEntity.hasMany(PriceListEntity, {
     foreignKey: 'unitId',
     as: 'priceLists',
   })

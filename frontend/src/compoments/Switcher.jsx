@@ -1,6 +1,5 @@
 import { useState } from "react"
 // import { changeLanguage } from '../i18n'
-import { Utils } from "../utils/storage"
 import { useLocalization } from '../contexts/LocalizationProvider'
 
 const languages = {
@@ -17,16 +16,18 @@ const languages = {
 }
 
 function Switcher() {
-  const { loadLanguage } = useLocalization()
-  const lang = Utils.getLocalStorage('lang') || 'en'
+  const { state, loadLanguage, setLanguageCode } = useLocalization()
+  const { language } = state
 
   const [open, setOpen] = useState(false)
-  const [currentLang, setLanguage] = useState(languages[lang])
 
+  const getLanguageItem = (language) => {
+    return languages[language]
+  }
 
   const handleChangeLanguage = async (item) => {
     setOpen(!open)
-    setLanguage(item)
+    setLanguageCode(item.lang)
     loadLanguage(item.lang)
   }
 
@@ -34,8 +35,8 @@ function Switcher() {
     <>
       <div className='switcher-section'>
           <div onClick={() => setOpen(!open)} className='dropdown-lang'>
-            <span>{currentLang.text}</span>
-            <img src={currentLang.flag} alt={currentLang.text} />
+            <span>{getLanguageItem(language).text}</span>
+            <img src={getLanguageItem(language).flag} alt={getLanguageItem(language).text} />
           </div>
           {open && (
             <div className="dropdown-select">

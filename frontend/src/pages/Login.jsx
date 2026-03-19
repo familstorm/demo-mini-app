@@ -33,34 +33,34 @@ function Login() {
 
   return (
     <div className='login-box'>
-      <h1>{t('Login')}</h1>
+      <h1>{t('auth.login_title')}</h1>
       <div className="form-section">
         <form id="login-form" method="post" autoComplete='off'>
           <FormInput
-            label="Enter your email address"
+            label={t('auth.input.email.label')}
             name="email"
             value={formData.values.email}
-            placeholder="Email address"
+            placeholder={t('auth.input.email.placeholder')}
             onChange={handleChange}
             error={errors.email}
           />
           <FormInput
-            label="Enter your password"
+            label={t('auth.input.password.label')}
             name="password"
             value={formData.values.password}
-            placeholder="Password"
+            placeholder={t('auth.input.password.placeholder')}
             onChange={handleChange}
             error={errors.password}
           />
           <div className='group-field'>
             {(!isValid || loading) ? (
-              <button disabled className='form-submit-btn disable' type="submit">Log in</button>
+              <button disabled className='form-submit-btn disable' type="submit">{t('auth.btn.login')}</button>
             ) : (
-              <button onClick={handleSubmit} className='form-submit-btn' type="submit">Log in</button>
+              <button onClick={handleSubmit} className='form-submit-btn' type="submit">{t('auth.btn.login')}</button>
             )}
             <div className='other-link'>
-              <Link to="/">Register</Link>
-              <Link to="/">Forgotten password?</Link>
+              <Link to="/">{t('auth.link.register')}</Link>
+              <Link to="/">{t('auth.link.forgot')}</Link>
             </div>
           </div>
         </form>

@@ -1,9 +1,7 @@
 
 export const initState = {
   language: 'en',
-  resources: {},
-  loading: false,
-  error: null,
+  resources: {}
 }
 
 export const LOCALIZATION_ACTIONS = {

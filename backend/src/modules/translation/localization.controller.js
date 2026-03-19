@@ -1,6 +1,6 @@
 
 const LocalizationController = {
-  getAll: (req, res, next) => {
+  list: (req, res, next) => {
     res.json({ message: 'respond with a all' });
   },
 

@@ -15,7 +15,6 @@ const menus = [
   {icon: 'fa-box-archive', text: 'Inventory Control', link: '/', active: false },
   {icon: 'fa-table-cells', text: 'Member Invoicing', link: '/', active: false },
   {icon: 'fa-cloud-arrow-up', text: 'Import/Export', link: '/', active: false },
-  {icon: 'fa-right-from-bracket', text: 'Log out', link: '/', active: false },
 ]
 
 function SideBar() {
@@ -35,8 +34,8 @@ function SideBar() {
 
         <div className={`sidebar custom-responsive ${toggler ? 'active': ''}`}>
           <div className='container'>
-            <h4>Menu</h4>
-            <hr/>
+            <h4 className='hide-tablet'>Menu</h4>
+            <hr className='hide-tablet'/>
             <div className="sidebar-menu">
               {menus.map((item, index) => (
                 <Link to={item.link} key={index} className={`menu-item ${item.active ? 'active' : ''}`}>
@@ -44,7 +43,6 @@ function SideBar() {
                   {item.text && <span>{item.text}</span>}
                 </Link>
               ))}
-
               <Link className='menu-item' onClick={logout}>
                 <i className='fa-solid fa-right-from-bracket'></i>
                 <span>Log out</span>
