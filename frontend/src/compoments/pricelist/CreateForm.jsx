@@ -11,7 +11,7 @@ function CreateForm() {
   const { t } = useTranslation();
   const navigate = useNavigate()
   const { state, dispatch, submitApi, getValidates } = useContext(PricelistCreateContext)
-  const { formData, isValid, errors, submited } = state;
+  const { formData, errors, submited } = state;
   
   const formAttributes = [
     {type: 'text', name: 'articleNo', label: 'Article No', placehoder: 'Article No'},
@@ -33,7 +33,6 @@ function CreateForm() {
   const handleSubmit = async(e) => {
     getValidates(formData)
 
-    if (!isValid) return
     e.preventDefault()
     if (submited)
       return
@@ -70,11 +69,11 @@ function CreateForm() {
           />
 
         <div className='group-field'>
-          {submited && isValid ? (
+            <button onClick={handleSubmit} className='form-submit-btn' type="submit">Save</button>
+          {/* {submited && isValid ? (
             <button disabled className='form-submit-btn' type="submit">Save</button>
           ): (
-            <button onClick={handleSubmit} className='form-submit-btn' type="submit">Save</button>
-          )}
+          )} */}
         </div>
       </div>
     </div>
