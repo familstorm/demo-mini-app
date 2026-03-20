@@ -1,0 +1,8 @@
+// .sequelizerc
+const path = require('path')
+
+module.exports = {
+  config: path.resolve('config', 'database.cjs'),
+  'models-path': path.resolve('./src/modules'),
+  'migrations-path': path.resolve('migrations'),
+};

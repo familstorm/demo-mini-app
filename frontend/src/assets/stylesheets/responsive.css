@@ -1,0 +1,162 @@
+.topbar .sidebar {
+  display: none;
+}
+
+.topbar .sidebar .hamburger {
+  display: none;
+}
+
+.layout .layout-content .sidebar {
+  display: block;
+}
+
+.active {
+  display: block !important;
+}
+
+.hide-desktop {
+  display: none !important;
+}
+
+@media screen and (max-width: 1133px) {
+  .hide-desktop {display: block !important;}
+  .hide-tablet, .topbar .avatar {
+    display: none !important;
+  }
+  .layout .topbar .container {
+    width: 92% !important;
+  }
+  .topbar .sidebar {
+    width: 100% !important;
+    height: calc(100vh - 95px) !important;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 80px;
+    bottom: 0;
+    z-index: 999 ;
+    padding: 16px 0 !important;
+    background: #fff !important;
+  }
+
+  .topbar .sidebar .container {
+    width: 100% !important;
+    flex-direction: column !important;
+    padding: 16px 0 !important;
+  }
+
+  .topbar .container {
+    padding: 0!important;
+    height: 80px !important;
+    position: relative;
+    z-index: 999;
+    left: 0;
+    right: 0;
+  }
+
+  .layout-content .hamburger {
+    display: none !important;
+  }
+
+  .topbar .hamburger {
+    display: block;
+    top: 1.2rem;
+    position: absolute;
+    background: #0D83ED !important;
+  }
+
+  .topbar .hamburger button {
+    width: 52px;
+    height: 52px;
+    background: none;
+    outline: none;
+    border: none;
+  }
+
+  .topbar .hamburger i{
+    width: 100%;
+    height: 100%;
+    font-size: 52px;
+    color: #fff;
+  }
+  .topbar .sidebar-menu {
+    min-height: 80vh;
+    overflow-y: scroll;
+  }
+  .topbar .sidebar .custom-responsive {
+    display: none;
+    background: #fff !important;
+    height: 100vh !important;
+
+    position: fixed;
+    top: 6rem;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+
+  .topbar .section-menu {
+    min-width: 120px !important;
+    position: absolute;
+    top: 2.2rem;
+    right: 1.5rem;
+  }
+
+  .layout .layout-content .sidebar {
+    display: none !important;
+  }
+
+  .pricelist-page .search-container,
+  .pricelist-page .search-container .search-group {
+    width: 320px !important;
+  }
+ 
+  .pricelist-page .action-toolbar .btn{
+    flex-direction: column;
+    justify-content: space-between !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hide-mobile {display: none !important;}
+  .layout .topbar .container {
+    width: 100%!important;
+  }
+  .topbar .hamburger {
+    left: 1.2rem;
+  }
+  .topbar .sidebar {
+    top: 90px !important;
+  }
+  .layout-main {
+    width: 100% !important;
+    padding: 0 !important;
+    flex: none !important;
+  }
+  .pricelist-page, .pricelist-page .search-container, .pricelist-page .search-container .search-group  {
+    width: 100% !important;
+  }
+  .pricelist-page .filter-toolbar {
+    padding: 0 8px;
+    flex-direction: column !important;
+  }
+  .pricelist-page .search-container .search-group,
+  .pricelist-page .search-container .search-group .search-input{
+    padding: 0 !important;
+  }
+  .pricelist-page .search-container .search-group {
+    position: relative;
+  }
+  .pricelist-page .search-container .search-group .search-input {
+    padding-left: 16px !important;
+  }
+  .pricelist-page .search-container .search-group .search-button {
+    position: absolute;
+    right: 1.2rem !important;
+  }
+  .pricelist-page .action-toolbar {
+    display: flex;
+    justify-content: space-between !important;
+  }
+
+}

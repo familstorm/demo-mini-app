@@ -1,0 +1,194 @@
+.login-layout {
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+  background: url("/sverige43.jpg") no-repeat center / cover;
+}
+
+.login-layout .topbar{
+  display: flex;
+  justify-content: center;
+}
+
+.login-layout .login-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+
+.login-container .login-box {
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 36px;
+  flex-direction: column;
+  width: 560px;
+  min-height: 340px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-container .login-box h1 {
+  font-size: 46px;
+  color: #ff0000;
+  letter-spacing: 0.025em;
+  font-weight: 900;
+}
+
+.login-box .form-section {
+  width: 85%;
+}
+
+.login-box .group-field  .other-link {
+  padding: 1.5rem 0 0;
+}
+
+.login-box .group-field  .other-link a {
+  color: #000;
+  padding: 0 3rem;
+  padding-bottom: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+.login-layout a, .login-layout a:hover, .login-layout p, .login-layout h4 {
+  color: #fff;
+  font-family: "Open Sans", sans-serif !important;
+  vertical-align: middle;
+}
+
+.login-layout a, .login-layout a:hover {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1133px) {
+  .login-layout {
+    min-height: 852px;
+  }
+  .mask {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+  .mask.active {
+    display: block;
+  }
+  .show-tablet {
+    display: block !important;
+  }
+  .hide-desktop {
+    display: block !important;
+  }
+  .login-layout .hamburger {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 9999;
+  }
+  .login-layout .hamburger button{
+    background: none;
+    outline: none;
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 38px;
+    position: relative;
+  }
+  .login-layout .hamburger button i {
+    width: 100%;
+    height: 100%;
+  }
+  .login-layout .hamburger button i::before{
+    font-size: 48px;
+  }
+  .topbar .container {
+    width: 100% !important;
+  }
+
+  .mobile.section-menu {
+    display: none;
+    min-width: 212px;
+    flex-direction: column;
+    align-self: center;
+    background: #fff;
+    padding: 8px 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  .mobile.section-menu a{
+    padding: 16px 0px;
+    color: #000 !important;
+
+  }
+  .mobile.section-menu.active {
+    display: flex !important;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .login-container {
+    max-height: 616px;
+  }
+  .login-layout {
+    min-height: 852px;
+    overflow: hidden;
+    height: 100vh !important;
+    padding-bottom: 24px;
+  }
+  .login-box .group-field .other-link a{
+    padding: 0 .8rem !important;
+  }
+  .login-box .form-section {
+    width: 100%;
+  }
+  .footer .footer-text-section {
+    flex-direction: column;
+  }
+  .login-container .login-box {
+    padding: 1.2rem 2rem;
+  }
+  .footer-text-section .text-section-list-link {
+    padding-top: .5rem;
+  }
+  .footer .footer-text-section h4 {
+    text-align: center;
+  }
+  .footer .footer-copyright {
+    padding-top: 1rem;
+  }
+  .footer .footer-copyright p {
+    font-size: 16px;
+    font-weight: 300;
+  }
+  .login-box .group-field .form-submit-btn {
+    width: 186px;
+    height: 52px;
+    padding: 0.2rem 2rem;
+  }
+}
+
+.animation {
+  animation: fadeInDown 0.5s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Bắt đầu từ trên cao 20px */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* Về vị trí chuẩn */
+  }
+}
