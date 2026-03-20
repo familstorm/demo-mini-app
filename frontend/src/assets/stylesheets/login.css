@@ -67,7 +67,7 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1133px) {
   .login-layout {
     min-height: 852px;
   }
@@ -90,13 +90,13 @@
   .hide-desktop {
     display: block !important;
   }
-  .hamburger {
+  .login-layout .hamburger {
     position: absolute;
     top: 1.2rem;
     left: 1.2rem;
     z-index: 9999;
   }
-  .hamburger button{
+  .login-layout .hamburger button{
     background: none;
     outline: none;
     border: none;
@@ -105,11 +105,11 @@
     height: 38px;
     position: relative;
   }
-  .hamburger button i {
+  .login-layout .hamburger button i {
     width: 100%;
     height: 100%;
   }
-  .hamburger button i::before{
+  .login-layout .hamburger button i::before{
     font-size: 48px;
   }
   .topbar .container {
@@ -143,7 +143,7 @@
   .login-layout {
     min-height: 852px;
     overflow: hidden;
-    height: 100% !important;
+    height: 100vh !important;
     padding-bottom: 24px;
   }
   .login-box .group-field .other-link a{
