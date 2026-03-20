@@ -22,7 +22,6 @@ const getTranslation = async (languageId) => {
       where: { languageId },
       raw: true
     })
-
     const trans = {}
     for (const i of translations) {
       trans[i.key] = i.value
@@ -37,13 +36,10 @@ const getTranslation = async (languageId) => {
 const getTranslations = async (code) => {
   try {
     let language = await getLanguage(code)
-    console.log('language:', language);
-
     if (language?.code == undefined) {
       language = await getLanguage('en')
     }
     const result = await getTranslation(language.id)
-    console.log('result', result);
     return result
   } catch (error) {
     console.log('errors', error);

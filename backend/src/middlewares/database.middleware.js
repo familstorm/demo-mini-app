@@ -23,10 +23,11 @@ const initializationDatabase = (database) => {
     as: 'language'
   })
 
+
   // Relationship for pricelist
   PriceListEntity.belongsTo(UnitEntity, {
     foreignKey: 'unitId',
-    as: 'units'
+    as: 'unit'
   })
   UnitEntity.hasMany(PriceListEntity, {
     foreignKey: 'unitId',

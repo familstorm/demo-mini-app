@@ -7,26 +7,20 @@ import PriceListEntity from './entities/pricelist.entity.js'
 const list = async (queries = {}) => {
   const { articleNo, name } = queries
   const pagination = paginationUtil.getPagination(queries)
-  console.log('pagination: ', pagination);
   try {
     const selete = ['id', 'articleNo', 'name', 'inPrice', 'price', 'inStock', 'description', 'unitId']
     const where = queries?.where ? queries?.where : {}
-    if (articleNo) where.articleNo = { [Op.like]: `%${sanitizeTextUtil(articleNo)}%` }
+    if (articleNo) where.articleNo = articleNo
     if (name) where.name = { [Op.like]: `%${sanitizeTextUtil(name)}%` }
-
-    console.log('result:', where);
     const { count, rows } = await PriceListEntity.findAndCountAll({
       attributes: selete,
       where,
       include: [{ model: UnitEntity, as: 'unit', attributes: ['id', 'title', 'symbol'] }],
       offset: pagination.offset,
       limit: pagination.limit,
-      raw: true
     });
-    // const result = rows.map(i => i.dataValues)
-    console.log('result:', result);
     return {
-      data: rows,
+      data: rows.map(i => i.dataValues),
       meta: paginationUtil.getPaginationMeta(pagination, count)
     }
   } catch (error) {
