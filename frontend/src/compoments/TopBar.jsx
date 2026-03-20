@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import SideBar from './SideBar'
 import Switcher from './Switcher'
 import '../assets/stylesheets/topbar.css'
 
@@ -6,18 +7,20 @@ function TopBar() {
 
   return(
     <div className="topbar">
-      <div className='logo'>
-        <Link to="/">
-          <img src="./diamond.png" alt="Logo"/>
-        </Link>
-      </div>
-      <div className='section-menu'>
-          <Link to='/'>Home</Link>
-          <Link to='/'>Order</Link>
-          <Link to='/'>Our Customers</Link>
-          <Link to='/'>About us</Link>
-          <Link to='/'>Contact us</Link>
-          <Switcher />
+      <div className='container'>
+        <div className='avatar'>
+          <Link to="/">
+            <img src="./diamond.png" alt="Logo"/>
+          </Link>
+          <div className='text-block'>
+            <h4 className='text text-name'>John Andre</h4>
+            <p className='text text-position'>Storfjord AS</p>
+          </div>
+        </div>
+        <SideBar />
+        <div className='section-menu'>
+            <Switcher />
+        </div>
       </div>
     </div>
   )

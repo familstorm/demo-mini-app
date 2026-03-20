@@ -1,0 +1,168 @@
+.pricelist-page {
+  height: 100%;
+}
+.pricelist-page .filter-toolbar {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.pricelist-page .search-container .search-group {
+  display: flex;
+  align-items: center;
+  width: 400px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50px;
+  border: 1px solid #e0e0e0;
+  padding: 2px 5px;
+  margin: 6px 0;
+}
+
+.pricelist-page .search-container .search-group .search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 15px;
+  font-size: 0.95rem;
+  color: #000;
+  box-sizing: border-box;
+}
+
+.search-group .search-input::placeholder {
+  color: #bdc3c7;
+}
+
+.search-group .clear-btn {
+  border-left: 1px solid #eee; 
+  padding: 0 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+}
+
+.search-group .clear-btn i {
+  font-size: 1rem;
+  color: #F54927;
+}
+
+.search-group .search-button {
+  border-left: 1px solid #eee; 
+  padding: 0 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+}
+
+.search-group .search-button i {
+  font-size: 1.1rem;
+}
+
+.pricelist-page .action-toolbar {
+  flex-direction: row;
+}
+
+.pricelist-page .action-toolbar .btn {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  padding: 8px 18px;
+  margin: 0 8px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  outline: none;
+}
+
+.pricelist-page .action-toolbar .btn i{
+  font-size: 1.2rem;
+}
+
+.pricelist-page .action-toolbar .btn span {
+  padding-right: 8px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+}
+
+.pricelist-page .action-toolbar .btn.btn-product i{
+  color: green;
+}
+
+.pricelist-page .action-toolbar .btn.btn-print i,
+.pricelist-page .action-toolbar .btn.btn-mode i{
+  color: blue;
+}
+
+.pricelist-table {
+  width: 100%;
+  height: calc(85vh - 90px);
+  overflow-y: auto;
+  padding-right:16px;
+}
+
+.pricelist-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.pricelist-table .table-header th {
+  text-align: left;
+  font-size: 0.9rem;
+  color: #666;
+  padding: 10px 0;
+  padding-left: 8px;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.pricelist-table .table-header th:nth-child(3), .pricelist-table tbody td:nth-child(3) {
+  min-width: 250px;
+}
+
+
+.pricelist-table .table-header th:nth-child(8),  .pricelist-table tbody td:nth-child(8) {
+  min-width: 320px;
+}
+
+
+.pricelist-table .table-body td {
+  vertical-align: middle;
+  outline: none;
+}
+
+.pricelist-page .pricelist-table .table-body {
+  display: inline-flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.pricelist-table tbody td {
+  padding: 2px 4px;
+}
+
+.pricelist-table tbody .cell-content {
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 6px 15px;
+  background-color: #fff;
+  font-size: 0.9rem;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pricelist-table tbody .cell-content .input-editable {
+  width: 100%;
+}

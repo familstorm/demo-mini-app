@@ -1,8 +1,10 @@
 import { Outlet } from 'react-router'
+import useToken from '../hooks/token'
+import TopBar from '../compoments/TopBar'
 import SideBar from '../compoments/SideBar'
 import ProtectedRoute from '../compoments/ProtectedRoute'
-import useToken from '../hooks/token'
-
+import '../assets/stylesheets/responsive.css'
+import { LocalizationProvider } from '../contexts/LocalizationProvider'
 
 function MainLayout() {
   const {token} = useToken()
@@ -10,17 +12,22 @@ function MainLayout() {
 
   return (
     <>
-    <ProtectedRoute token={token}>
-      <div>
-        <h4>App TopBar</h4>
-      </div>
+      <LocalizationProvider>
+        <ProtectedRoute token={token}>
+          <div className='layout'>
+            <TopBar />
 
-      <SideBar />
-      
-      <main>
-        <Outlet />
-      </main>
-    </ProtectedRoute>
+            <div className='layout-content'>
+              <div className='hide-mobile'>
+                <SideBar />
+              </div>
+              <main className='layout-main'>
+                <Outlet />
+              </main>
+            </div>
+          </div>
+        </ProtectedRoute>
+      </LocalizationProvider>
     </>
   )
 }
